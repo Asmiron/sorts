@@ -71,6 +71,33 @@ public class Arr_Sorts {
     }       
 
 
+    public void Shell_sort(){
+        InShell();
+    }
+
+
+    private void InShell(){
+        int inner;
+        int outer;
+        int tmp;
+        int h=1;      //Шаг сортировки Шелла (для приращения)
+        while (h <= Size/3) {
+            h = 3*h + 1;
+        }
+        while (h>0){
+            for (outer = h; outer<Size; outer++){
+                tmp = Array[outer];
+                inner = outer;
+                while (inner-h >= 0 && Array[inner-h] >= tmp){
+                    Array[inner] = Array[inner-h];
+                    inner -= h;
+                }
+                Array[inner] = tmp;
+            }
+            h = (h-1)/3;
+        }
+    }
+
     private void swap(int x, int y){
         int tmp = Array[x];
         Array[x] = Array[y];
