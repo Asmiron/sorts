@@ -43,18 +43,18 @@ public class Arr_Sorts {
     }
 
     private int partition(int left, int right, int pivot){
-        int leftptr = left;
-        int rightptr = right-1;
+        int leftptr = left-1;
+        int rightptr = right;
         while(true) {
             while (Array[++leftptr] < pivot) ;
-            while (Array[--rightptr] > pivot) ;
+            while (rightptr > 0 && Array[--rightptr] > pivot) ;
             if (rightptr <= leftptr)
                 break;
             else {
                 swap(leftptr,rightptr);
             }
         }
-        swap(leftptr, right-1);
+        swap(leftptr, right);
         return leftptr;
     }
 
@@ -68,7 +68,7 @@ public class Arr_Sorts {
             swap(med, right);
         swap(med, right-1);
         return right-1;
-    }       
+    }
 
 
     private void swap(int x, int y){
@@ -76,4 +76,8 @@ public class Arr_Sorts {
         Array[x] = Array[y];
         Array[y] = tmp;
     }
+
+    public int getSize(){ return Size; }
+
+    public int getone(int i){return Array[i];}
 }
